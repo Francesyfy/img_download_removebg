@@ -94,8 +94,6 @@ def remove_bg(image_dir, prediction_dir):
     # --------- 4. inference for each image ---------
     for i_test, data_test in enumerate(test_salobj_dataloader):
 
-        print('Background removed')
-
         inputs_test = data_test['image']
         inputs_test = inputs_test.type(torch.FloatTensor)
 
