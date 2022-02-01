@@ -139,7 +139,7 @@ def main():
     print('Search keyword: ' + keyword)
 
     # download images
-    num = 10
+    num = 100
     download_images(keyword, num, path_d, path_t)
 
     # backup folders
