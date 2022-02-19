@@ -31,25 +31,21 @@ def normPRED(d):
     return dn
 
 def save_output(image_name,pred,d_dir):
-
     predict = pred
     predict = predict.squeeze()
     predict_np = predict.cpu().data.numpy()
 
     im = Image.fromarray(predict_np*255)
-    img_name = image_name.split(os.sep)[-1]
-    image = Image.open(image_name).convert('RGB')
-    width, height = image.size
-    mask = im.resize((width, height),resample=Image.BILINEAR).convert('L')
-    image.putalpha(mask)
+    img_name = image_name.split('/')[-1]
+    
+    with Image.open(image_name) as image:
+        image = image.convert('RGB')
+        width, height = image.size
+        mask = im.resize((width, height),resample=Image.BILINEAR).convert('L')
+        image.putalpha(mask)
 
-    aaa = img_name.split(".")
-    bbb = aaa[0:-1]
-    imidx = bbb[0]
-    for i in range(1,len(bbb)):
-        imidx = imidx + "." + bbb[i]
-
-    image.save(d_dir+imidx+'.png')
+        aaa = img_name.split(".")
+        image.save(d_dir+aaa[0]+'.png')
 
 def remove_bg(image_dir, prediction_dir):
 
