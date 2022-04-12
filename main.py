@@ -86,7 +86,7 @@ def download_images(browser, url, kw, num, path_d, path_t):
 
             clicked_imgs = browser.find_elements_by_xpath('//a[@class="eHAdSb"]')
             size = clicked_imgs[1].find_element_by_xpath('.//span[@class="VSIspc"]').get_attribute('innerHTML')
-            w, h = size.split(' × ')
+            w, h = size.replace(',','').split(' × ')
             print(f'Image {index+1} size: {size}')
 
             # check image sizes

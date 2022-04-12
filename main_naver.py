@@ -91,7 +91,7 @@ def get_image_links(rank, kw):
                 image_links.append(img_info['link'])
             num_display += 1
 
-    with open("keywords.txt", "a") as log:
+    with open("keywords.txt", "a", encoding="utf-8") as log:
         line = data['lastBuildDate']+', '
         line += str(rank)+', '
         line += kw+', '
